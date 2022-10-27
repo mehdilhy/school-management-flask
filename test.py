@@ -4,8 +4,8 @@ import unittest
 from faker import Faker
 from flask_sqlalchemy import SQLAlchemy
 
-from models.models import Class, Student, Subject, Teacher, setup_db
-from my_school import create_app
+from app import create_app
+from models import Class, Student, Subject, Teacher, setup_db
 from settings import (ADMIN_TOKEN, DB_PASSWORD, DB_USER, STUDENT_TOKEN,
                       TEACHER_TOKEN)
 
@@ -39,7 +39,7 @@ class MySchoolTestCase(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "my-school-test"
-        self.database_path = "postgres://{}:{}@{}/{}".format(
+        self.database_path = "postgresql://{}:{}@{}/{}".format(
             DB_USER, DB_PASSWORD, 'localhost:5432', self.database_name)
         self.student_token = STUDENT_TOKEN
         self.teacher_token = TEACHER_TOKEN
@@ -859,18 +859,6 @@ class MySchoolTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         print('\n'+bcolors.OKGREEN +
               "Get Classes With Student Token OK ✓" + bcolors.ENDC)
-
-    def test_get_class_no_token(self):
-        '''
-        Test get class without token
-        '''
-        res = self.client().get('/classes/1')
-        data = json.loads(res.data)
-        self.assertEqual(res.status_code, 401,
-                         bcolors.FAIL + "Get Class Without Token Fail X" + bcolors.ENDC)
-        self.assertEqual(data['success'], False)
-        print('\n'+bcolors.OKGREEN +
-              "Get Class Without Token OK ✓" + bcolors.ENDC)
 
 
 if __name__ == "__main__":

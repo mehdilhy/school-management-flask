@@ -3,8 +3,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 
 from auth.auth import AuthError, requires_auth
-from models.models import (Class, Student, Subject, SubjectResult, Teacher,
-                           setup_db)
+from models import Class, Student, Subject, SubjectResult, Teacher, setup_db
 
 ELEMENTS_PER_PAGE = 10
 
@@ -534,3 +533,9 @@ def create_app(test_config=None):
             "message": error.error
         }), error.status_code
     return app
+
+
+app = create_app()
+
+if __name__ == '__main__':
+    app.run()
