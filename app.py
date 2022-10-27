@@ -88,10 +88,17 @@ def create_app(test_config=None):
             abort(404)
         body = request.get_json()
         name = body.get('name', None)
-        if not name:
-            abort(400)
+        phone = body.get('phone', None)
+        email = body.get('email', None)
+        address = body.get('address', None)
+        class_id = body.get('class_id', None)
         try:
-            teacher.name = name
+            teacher.name = name if name else teacher.name
+            teacher.phone = phone if phone else teacher.phone
+            teacher.email = email if email else teacher.email
+            teacher.address = address if address else teacher.address
+            # teacher.class_id = class_id if class_id else teacher.class_id
+
             teacher.update()
             return jsonify({
                 'success': True,
@@ -201,12 +208,12 @@ def create_app(test_config=None):
             abort(404)
         body = request.get_json()
         name = body.get('name', None)
+        age = body.get('age', None)
         class_id = body.get('class_id', None)
-        if not name or not class_id:
-            abort(400)
         try:
-            student.name = name
-            student.class_id = class_id
+            student.name = name if name else student.name
+            student.class_id = class_id if class_id else student.class_id
+            student.age = age if age else student.age
             student.update()
             return jsonify({
                 'success': True,
