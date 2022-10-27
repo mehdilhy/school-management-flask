@@ -1,7 +1,8 @@
-from auth.auth import AuthError, requires_auth
 from flask import Flask, abort, jsonify, request
 from flask_cors import CORS
 from flask_migrate import Migrate
+
+from auth.auth import AuthError, requires_auth
 from models.models import (Class, Student, Subject, SubjectResult, Teacher,
                            setup_db)
 
