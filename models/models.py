@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from settings import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER
 
+print("DB_HOST: ", DB_HOST)
 database_name = DB_NAME
 database_path = 'postgresql://{}:{}@{}/{}'.format(
     DB_USER, DB_PASSWORD, DB_HOST+":"+DB_PORT, database_name)
