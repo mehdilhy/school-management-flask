@@ -1,7 +1,5 @@
 # School Management System API
 
-## Capstone Project for Udacity's Full Stack Developer Nanodegree
-
 Heroku Link: https://my-school-udacity.herokuapp.com/
 
 Local : http://localhost:5000
