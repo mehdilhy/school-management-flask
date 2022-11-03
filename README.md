@@ -8,7 +8,7 @@ Local : http://localhost:5000
 
 ## Motivation for Project
 
-This project is a capstone project for Udacity's Full Stack Developer Nanodegree. The project is a school management system API that allows users to view, add, update and delete students, teachers ,classes and subjects. The API is built using Flask and SQLAlchemy.
+This project is a school management system API that allows users to view, add, update and delete students, teachers ,classes and subjects. The API is built using Flask and SQLAlchemy.
 
 This READMe file contains instructions on how to run the project locally and how to run the tests.
 
